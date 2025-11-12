@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de démarrage</title>
+    <link rel="icon" type="image/png" href="home.png">
+
+    <script src="links.js" defer></script>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 2rem;
+        }
+        
+        header { 
+            text-align: center; 
+            margin-bottom: 2rem; 
+        }
+
+        h1 { color: #333; }
+        
+        main { 
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+        }
+
+        h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            color: #1a535c;
+            margin-top: 0;
+        }
+        
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .link-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            width: auto;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            opacity: 0.9;
+            box-sizing: border-box;
+        }
+        
+        .link-item:hover { 
+            background-color: #e0e0e0;
+            opacity: 1; 
+        }
+        
+        .link-item img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 0;
+            margin-right: 1rem;
+        }
+        
+        .link-item p {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Liens fréquemment utilisés</h1>
+    </header>
+
+    <main id="app-container">
+        </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Génération du HTML à partir de links.js
+            const appContainer = document.getElementById('app-container');
+            
+            if (typeof linkData === 'undefined' || !appContainer) {
+                console.error("Erreur : Fichier 'links.js' non chargé ou 'app-container' introuvable.");
+                appContainer.innerHTML = "<p>Erreur de chargement. Vérifiez que le fichier 'links.js' est bien dans le même dossier que 'index.html'.</p>";
+                return;
+            }
+
+            linkData.forEach(category => {
+                const section = document.createElement('section');
+                const title = document.createElement('h2');
+                title.textContent = category.categoryName;
+                section.appendChild(title);
+                
+                const linksContainer = document.createElement('div');
+                linksContainer.className = 'links-container';
+                
+                category.links.forEach(link => {
+                    const linkItem = document.createElement('div');
+                    linkItem.className = 'link-item';
+                    linkItem.dataset.url = link.url;
+                    
+                    linkItem.innerHTML = `
+                        <img src="${link.icon}" alt="${link.name}">
+                        <p>${link.name}</p>
+                    `;
+                    linksContainer.appendChild(linkItem);
+                });
+                
+                section.appendChild(linksContainer);
+                appContainer.appendChild(section);
+            });
+
+
+            // Gestion des clics : ouverture du lien dans un nouvel onglet
+            document.body.addEventListener('click', (event) => {
+                const linkItem = event.target.closest('.link-item');
+                
+                if (linkItem) {
+                    const url = linkItem.dataset.url;
+                    
+                    if (url) {
+                        // Ouvre le lien dans un nouvel onglet. 
+                        // Le navigateur décidera si cet onglet est actif ou non.
+                        window.open(url, '_blank'); 
+                    }
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
