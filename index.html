@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page de démarrage</title>
-    <link rel="icon" type="image/png" href="home.png">
-
+    
     <script src="links.js" defer></script>
 
     <style>
@@ -26,6 +25,7 @@
         main { 
             max-width: 1400px;
             margin: 0 auto;
+            /* Disposition en grille pour les catégories */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
@@ -46,12 +46,14 @@
         }
         
         .links-container {
+            /* Liste verticale des liens */
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
         }
         
-        .link-item {
+        /* Style de l'hyperlien natif (<a>) */
+        a.link-item { 
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -64,9 +66,13 @@
             transition: all 0.2s ease-in-out;
             opacity: 0.9;
             box-sizing: border-box;
+            
+            /* Styles pour supprimer l'apparence par défaut des liens <a> */
+            text-decoration: none; 
+            color: inherit; 
         }
         
-        .link-item:hover { 
+        a.link-item:hover { 
             background-color: #e0e0e0;
             opacity: 1; 
         }
@@ -84,14 +90,13 @@
             font-size: 1rem;
             font-weight: 500;
             text-align: left;
-            color: #444;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Liens fréquemment utilisés</h1>
+        <h1>Mon Tableau de Bord</h1>
     </header>
 
     <main id="app-container">
@@ -119,9 +124,14 @@
                 linksContainer.className = 'links-container';
                 
                 category.links.forEach(link => {
-                    const linkItem = document.createElement('div');
+                    // CHANGEMENT CLÉ : Création de l'élément <a>
+                    const linkItem = document.createElement('a');
                     linkItem.className = 'link-item';
-                    linkItem.dataset.url = link.url;
+                    
+                    // Configuration de l'hyperlien natif
+                    linkItem.href = link.url;
+                    linkItem.target = "_blank"; // Ouvre dans un nouvel onglet
+                    linkItem.rel = "noopener noreferrer"; // Sécurité pour le Referer/Origin
                     
                     linkItem.innerHTML = `
                         <img src="${link.icon}" alt="${link.name}">
@@ -134,21 +144,8 @@
                 appContainer.appendChild(section);
             });
 
-
-            // Gestion des clics : ouverture du lien dans un nouvel onglet
-            document.body.addEventListener('click', (event) => {
-                const linkItem = event.target.closest('.link-item');
-                
-                if (linkItem) {
-                    const url = linkItem.dataset.url;
-                    
-                    if (url) {
-                        // Ouvre le lien dans un nouvel onglet. 
-                        // Le navigateur décidera si cet onglet est actif ou non.
-                        window.open(url, '_blank'); 
-                    }
-                }
-            });
+            // GESTION DES CLICS : AUCUN CODE NÉCESSAIRE.
+            // Les liens sont gérés nativement par le navigateur.
 
         });
     </script>
