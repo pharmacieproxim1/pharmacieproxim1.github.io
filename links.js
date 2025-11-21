@@ -22,7 +22,7 @@ const linkData = [
             },
             {
                 name: "Écrans",
-                url: "http://http://10.9.57.182:8000/",
+                url: "http://10.9.57.182:8000/",
                 icon: "screen.png"
             }
         ]
@@ -102,3 +102,4 @@ const linkData = [
     // Pour ajouter une nouvelle catégorie, copiez tout un bloc { ... }, ici
 
 ];
+
