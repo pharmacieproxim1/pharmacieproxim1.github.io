@@ -19,8 +19,12 @@ const linkData = [
                 name: "I-Vision",
                 url: "http://10.9.57.80/Account/Login?ReturnUrl=%2F#",
                 icon: "ivision.png"
+            },
+            {
+                name: "Écrans",
+                url: "http://http://10.9.57.182:8000/",
+                icon: "screen.png"
             }
-            // Pour ajouter un lien, copiez le bloc ci-dessus et collez-le ici
         ]
     },
 
@@ -96,4 +100,5 @@ const linkData = [
     }
     
     // Pour ajouter une nouvelle catégorie, copiez tout un bloc { ... }, ici
+
 ];
