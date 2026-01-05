@@ -66,7 +66,7 @@ const linkData = [
             },
             {
                 name: "K&F",
-                url: "https://kohlandfrisch.com/fr/",
+                url: "https://kfconnect.kohlandfrisch.com/fr-FR",
                 icon: "kf.svg"
             },
             {
@@ -102,4 +102,5 @@ const linkData = [
     // Pour ajouter une nouvelle catégorie, copiez tout un bloc { ... }, ici
 
 ];
+
 
