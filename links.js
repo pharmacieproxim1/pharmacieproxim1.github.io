@@ -21,7 +21,7 @@ const linkData = [
                 icon: "ivision.png"
             },
             {
-                name: "Écrans",
+                name: "PrioFlo",
                 url: "http://10.9.57.182:8000/",
                 icon: "screen.png"
             }
@@ -102,5 +102,6 @@ const linkData = [
     // Pour ajouter une nouvelle catégorie, copiez tout un bloc { ... }, ici
 
 ];
+
 
 
