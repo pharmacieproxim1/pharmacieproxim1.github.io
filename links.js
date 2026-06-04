@@ -22,7 +22,7 @@ const linkData = [
             },
             {
                 name: "PrioFlo",
-                url: "http://10.9.57.182:8000/",
+                url: "http://10.9.57.183:8000/",
                 icon: "screen.png"
             }
         ]
