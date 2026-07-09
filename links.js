@@ -24,6 +24,11 @@ const linkData = [
                 name: "PrioFlo",
                 url: "http://10.9.57.183:8000/",
                 icon: "screen.png"
+            },
+            {
+                name: "Mobilus",
+                url: "https://app.mobilus.com",
+                icon: "mobilus.ico"
             }
         ]
     },
