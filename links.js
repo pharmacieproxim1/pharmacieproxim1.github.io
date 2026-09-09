@@ -29,6 +29,11 @@ const linkData = [
                 name: "Mobilus",
                 url: "https://app.mobilus.com",
                 icon: "mobilus.ico"
+            },
+            {
+                name: "Réunion",
+                url: "https://docs.google.com/document/d/1atr0GGkYGhQn5U-J04igJ5d9O5kT9oAQ5H7w5QXdq8Y/edit?usp=sharing",
+                icon: "reunion.jpg"
             }
         ]
     },
